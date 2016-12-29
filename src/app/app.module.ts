@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { listReducer, ListItem, DataItem } from './listStore';
+import { listReducer, ListItem, DataItem, selectedItem } from './listStore';
 
 // ngrx
 import { StoreModule} from '@ngrx/store';
@@ -17,7 +17,7 @@ import { StoreModule} from '@ngrx/store';
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.provideStore({listItems: listReducer}),
+    StoreModule.provideStore({listReducer,selectedItem}),
   ],
   providers: [],
   bootstrap: [AppComponent]

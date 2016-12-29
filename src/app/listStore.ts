@@ -16,6 +16,14 @@ export interface DataItem {
     id: String,
 }
 
+export function selectedItem(state: ListItem = null, {type, payload}) {
+  switch (type) {
+    case 'SELECT_ITEM':
+      return payload;
+    default:
+      return state;
+  }
+};
 
 /**
  *
