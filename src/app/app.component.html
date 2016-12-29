@@ -1,3 +1,9 @@
 <h1>
-  {{title}}
+    {{title}}
 </h1>
+<button (click)="addListItem()">ADD</button>
+<div>
+    <li *ngFor="let item of listItems | async">
+        {{item | json}} <button (click)="deleteListItem(item)">DELETE</button>
+    </li>
+</div>

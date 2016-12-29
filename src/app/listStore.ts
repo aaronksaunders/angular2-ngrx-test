@@ -1,5 +1,5 @@
-import {ActionReducer, Action} from "@ngrx/store";
-import {UUID} from 'angular2-uuid';
+import { ActionReducer, Action } from "@ngrx/store";
+import { UUID } from 'angular2-uuid';
 /**
  * Created by aaronksaunders on 12/25/16.
  */
@@ -7,7 +7,12 @@ import {UUID} from 'angular2-uuid';
 
 export interface ListItem {
     itemName: String,
-    items: [any]
+    items: Array<DataItem>,
+    id: String,
+}
+
+export interface DataItem {
+    data: String,
     id: String,
 }
 
@@ -18,28 +23,17 @@ export interface ListItem {
  * @param action
  * @returns {any}
  */
-export const listReducer: ActionReducer<Array<ListItem>> = (state = [], action: Action) => {
+
+export function listReducer(state = [], action: Action): Array<ListItem> {
     console.log('ACTION:', action.type, action.payload);
     var idx;
-
-    /**
-     *
-     * @param _data
-     * @returns {{id: string, data: any}}
-     */
-    function createItemData(_data) {
-        return {
-            id: UUID.UUID(),
-            data: _data
-        }
-    }
 
     switch (action.type) {
         case 'ADD_LIST_ITEM':
             let uuid = UUID.UUID();
             return [
                 ...state,
-                Object.assign({id: uuid}, {itemName: action.payload})
+                Object.assign({ id: uuid }, { itemName: action.payload })
             ];
         case 'REMOVE_LIST_ITEM':
             idx = state.findIndex((_item) => {
@@ -68,12 +62,17 @@ export const listReducer: ActionReducer<Array<ListItem>> = (state = [], action: 
             } else {
                 return [
                     ...state.slice(0, idx),
-                    Object.assign({}, state[idx], {items: [...(state[idx].items || []), createItemData(action.payload.data)]}),
+                    Object.assign({}, state[idx], {
+                        items: [...(state[idx].items || []), {
+                            id: UUID.UUID(),
+                            data: action.payload.data
+                        }]
+                    }),
                     ...state.slice(idx + 1)
                 ];
             }
 
-        default :
+        default:
             return state;
     }
 }
