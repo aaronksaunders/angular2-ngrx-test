@@ -8,10 +8,12 @@ import { listReducer, ListItem, DataItem, selectedItem } from './listStore';
 
 // ngrx
 import { StoreModule} from '@ngrx/store';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

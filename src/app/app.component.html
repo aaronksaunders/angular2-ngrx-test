@@ -5,13 +5,8 @@
 <div class="row">
     <div class="col-md-8">
         <h3>MAIN LIST</h3>
-        <li *ngFor="let item of listItems | async">
-            <p> {{item | json}}</p>
-            <div>
-                <button (click)="deleteListItem(item)">DELETE</button>
-                <button (click)="showItemDetail(item)">SHOW</button>
-            </div>
-        </li>
+        <app-list [items]="listItems">
+        </app-list>
     </div>
     <div class="col-md-4">
         <h3>DETAILS</h3>
