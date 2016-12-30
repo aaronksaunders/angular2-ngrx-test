@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ListItem } from './listStore';
+import { ListItem, AppState } from './listStore';
 
-
-export interface AppState {
-  items: Array<ListItem>,
-  selectedItem: ListItem;
-}
 
 @Component({
   selector: 'app-root',
@@ -24,24 +19,12 @@ export class AppComponent {
     console.log(this.listItems);
   }
 
-  showItemDetail(_item) {
-    this._store.dispatch({ type: 'SELECT_ITEM', payload: _item });
-  }
-  deleteListItem(_item) {
+
+  addListItem(_itemTitle) {
     console.log("clicked")
     try {
-      this._store.dispatch({ type: 'REMOVE_LIST_ITEM', payload: _item });
-
-          this._store.dispatch({ type: 'SELECT_ITEM' });
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-  addListItem() {
-    console.log("clicked")
-    try {
-      this._store.dispatch({ type: 'ADD_LIST_ITEM', payload: "first list" });
+      this._store.dispatch({ type: 'ADD_LIST_ITEM', payload: _itemTitle.value });
+      _itemTitle.value = ""
     } catch (e) {
       console.log(e)
     }

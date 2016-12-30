@@ -4,6 +4,10 @@ import { UUID } from 'angular2-uuid';
  * Created by aaronksaunders on 12/25/16.
  */
 
+export interface AppState {
+  items: Array<ListItem>,
+  selectedItem: ListItem;
+}
 
 export interface ListItem {
     itemName: String,

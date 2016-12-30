@@ -1,7 +1,4 @@
 <li *ngFor="let item of items | async">
-    {{ item | json }}
-    <div>
-        <button (click)="deleteListItem(item)">DELETE</button>
-        <button (click)="showItemDetail(item)">SHOW</button>
-    </div>
+    <app-list-item [item]="item" (onDeleteItem)="deleteListItem($event)" (onShowDetailItem)="showItemDetail($event)">
+    </app-list-item>
 </li>
