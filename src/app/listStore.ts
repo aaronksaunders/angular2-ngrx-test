@@ -60,6 +60,7 @@ export function listReducer(state = [], action: Action): Array<ListItem> {
                     ...state.slice(idx + 1)
                 ];
             }
+            
         case 'UPDATE_LIST_ITEM':
             return state.map((_item) => {
                 return action.payload.id !== _item.id ? _item : Object.assign({}, state[idx], action.payload)

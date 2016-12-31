@@ -13,8 +13,9 @@
     </div>
     <div class="col-md-4">
         <h3>DETAILS</h3>
-        <div>
-            {{ (selectedItem | async) | json }}
+        <div *ngIf="(selectedItem | async)?.itemName">
+            <app-item-detail [item]="(selectedItem | async)"
+                (onAddItemData)="addDataToItem($event)"></app-item-detail>
         </div>
     </div>
 </div>

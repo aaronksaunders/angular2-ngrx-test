@@ -77,7 +77,7 @@ export class ListComponent implements OnInit {
 @Component({
   selector: 'app-list-item',
   template: `
-    {{ item | json }}
+    {{ item }}
     <div>
         <button  (click)="onDeleteItem.emit(item)">DELETE</button>
         <button  (click)="onShowDetailItem.emit(item)">SHOW</button>
