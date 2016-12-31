@@ -1,0 +1,8 @@
+<div>
+  <div>{{ item.itemName }}</div>
+  <li *ngFor="let i of item.items">
+    {{ i | json}}
+  </li>
+</div>
+<input type="text" #itemDataTitle />
+<button (click)="handleAddDataItem(item,itemDataTitle)">ADD</button>
