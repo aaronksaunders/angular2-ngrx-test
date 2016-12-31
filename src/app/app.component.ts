@@ -26,18 +26,19 @@ export class AppComponent {
    * when updating the specific object, we also need to update the selectedItem store
    * since the state has changed, we cannot mutate the object so we need to reset it
    *
-   * @param _params
+   * @param item
+   * @param title
    */
-  addDataToItem(_params) {
+  addDataToItem( /*_params */ {item, title}) {
 
-    console.log(`the item is ${_params.item} and the title is ${_params.title}`)
+    console.log(`the item is ${item} and the title is ${title}`)
 
     // add new data to specific list item
     this._store.dispatch({
       type: 'ADD_ITEM_TO_LIST',
       payload: {
-        id: _params.item.id,
-        data: _params.title
+        id: item.id,
+        data: title
       }
     });
 
@@ -47,7 +48,7 @@ export class AppComponent {
     this.listItems.subscribe((_i) => {
       console.log(_i)
       let idx = _i.findIndex((_item) => {
-        return _params.item.id === _item.id;
+        return item.id === _item.id;
       });
 
 

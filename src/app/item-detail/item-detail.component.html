@@ -1,7 +1,7 @@
 <div>
   <div>{{ item.itemName }}</div>
   <li *ngFor="let i of item.items">
-    {{ i | json}}
+    {{ i.data}}
   </li>
 </div>
 <input type="text" #itemDataTitle />
