@@ -15,7 +15,8 @@
         <h3>DETAILS</h3>
         <div *ngIf="(selectedItem | async)?.itemName">
             <app-item-detail [item]="(selectedItem | async)"
-                (onAddItemData)="addDataToItem($event)"></app-item-detail>
+                (onAddItemData)="addDataToItem($event)">
+            </app-item-detail>
         </div>
     </div>
 </div>

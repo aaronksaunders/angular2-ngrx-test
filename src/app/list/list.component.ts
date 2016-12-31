@@ -1,4 +1,4 @@
-// 
+//
 // @see https://gist.github.com/btroncone/a6e4347326749f938510#taking-advantage-of-changedetectiononpush
 // for information on ChangeDetectionStrategy
 
@@ -7,8 +7,8 @@ import { Store } from '@ngrx/store';
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 /**
- * 
- * 
+ *
+ *
  * @export
  * @class ListComponent
  * @implements {OnInit}
@@ -21,30 +21,30 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 })
 export class ListComponent implements OnInit {
   /**
-   * 
+   *
    * @type {ListItem[]}
    * @memberOf ListComponent
    */
   @Input() items: ListItem[];
   /**
    * Creates an instance of ListComponent.
-   * 
+   *
    * @param {Store<AppState>} _store
-   * 
+   *
    * @memberOf ListComponent
    */
   constructor(private _store: Store<AppState>) { }
 
   /**
-   * 
+   *
    * @memberOf ListComponent
    */
   ngOnInit() {
   }
   /**
-   * 
+   *
    * @param {any} _item
-   * 
+   *
    * @memberOf ListComponent
    */
   showItemDetail(_item) {
@@ -52,9 +52,9 @@ export class ListComponent implements OnInit {
     this._store.dispatch({ type: 'SELECT_ITEM', payload: _item });
   }
   /**
-   * 
+   *
    * @param {any} _item
-   * 
+   *
    * @memberOf ListComponent
    */
   deleteListItem(_item) {
@@ -69,7 +69,7 @@ export class ListComponent implements OnInit {
 }
 
 /**
- * 
+ *
  * @export
  * @class ListItemComponent
  * @implements {OnInit}
@@ -77,7 +77,7 @@ export class ListComponent implements OnInit {
 @Component({
   selector: 'app-list-item',
   template: `
-    {{ item }}
+    {{ item | json}}
     <div>
         <button  (click)="onDeleteItem.emit(item)">DELETE</button>
         <button  (click)="onShowDetailItem.emit(item)">SHOW</button>
@@ -101,13 +101,13 @@ export class ListItemComponent implements OnInit {
   @Output() onShowDetailItem = new EventEmitter()
   /**
    * Creates an instance of ListItemComponent.
-   * 
+   *
    * @memberOf ListItemComponent
    */
   constructor() { }
 
   /**
-   * 
+   *
    * @memberOf ListItemComponent
    */
   ngOnInit() {
